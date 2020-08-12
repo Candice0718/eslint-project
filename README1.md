@@ -168,7 +168,7 @@ yarn add eslint --save-dev
      }
      ```
 
-     在自定义规则create(context)钩子函数，context上下文中可以获取settings。
+     在自定义规则create(context)钩子函数，context上下文中可以获取settings。[具体请查看eslint 官网](https://eslint.org/docs/developer-guide/working-with-rules-deprecated#the-context-object)。
 
    - **extends** - 一个配置文件可以被基础配置中的已启用的规则继承。
 
