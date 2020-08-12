@@ -58,11 +58,11 @@ yarn add eslint --save-dev
       6. package.json
    2. 可以配置的信息如下：
 
-   - **Environments** - 指定脚本的运行环境。每种环境都有一组特定的预定义全局变量。
+   > **environments** - 指定脚本的运行环境。每种环境都有一组特定的预定义全局变量。
+   >
+   > 全局变量一部分来自`globals`第三方库，还有一部分来自`eslint/conf/environments.js`里面的定义。
 
-     全局变量一部分来自`globals`第三方库，还有一部分来自`eslint/conf/environments.js`里面的定义。
-
-   - **Env** - 要在配置文件里指定环境。如果你想在一个特定的**插件中**使用一种环境，确保提前在 `plugins` 数组里指定了插件名，然后在 env 配置中不带前缀的插件名后跟一个 `/` ，紧随着环境名。
+   - **env** - 要在配置文件里指定环境。如果你想在一个特定的**插件中**使用一种环境，确保提前在 `plugins` 数组里指定了插件名，然后在 env 配置中不带前缀的插件名后跟一个 `/` ，紧随着环境名。
 
      ```json
      {
@@ -72,7 +72,7 @@ yarn add eslint --save-dev
      }
      ```
 
-   - **Globals** - 脚本在执行期间访问的额外的全局变量。`globals` 配置属性设置为一个对象,该对象包含以你希望使用的每个全局变量。对于每个全局变量键，将对应的值设置为 `"writable"` 以允许重写变量，或 `"readonly"` 不允许重写变量,`"off"`禁用全局变量。
+   - **globals** - 脚本在执行期间访问的额外的全局变量。`globals` 配置属性设置为一个对象,该对象包含以你希望使用的每个全局变量。对于每个全局变量键，将对应的值设置为 `"writable"` 以允许重写变量，或 `"readonly"` 不允许重写变量,`"off"`禁用全局变量。
 
      ```json
      {
@@ -84,7 +84,7 @@ yarn add eslint --save-dev
      }
      ```
 
-   - **Plugins** - 在配置文件里配置插件时，可以使用 `plugins` 关键字来存放插件名字的列表。插件名称可以省略 `eslint-plugin-` 前缀。
+   - **plugins** - 在配置文件里配置插件时，可以使用 `plugins` 关键字来存放插件名字的列表。插件名称可以省略 `eslint-plugin-` 前缀。
 
      ```json
      {
@@ -97,7 +97,7 @@ yarn add eslint --save-dev
 
      
 
-   - **Rules** - 启用的规则及其各自的错误级别。
+   - **rules** - 启用的规则及其各自的错误级别。
 
      - `"off"` 或 `0` - 关闭规则
      - `"warn"` 或 `1` - 开启规则，使用警告级别的错误：`warn` (不会导致程序退出)
@@ -145,7 +145,7 @@ yarn add eslint --save-dev
 
    - **parser** - 默认解析器为Espree, 可以传其他解析器： esprima、babel-eslint、@typescript-eslint/parser
 
-   - **Processor** - 处理器。插件可以提供处理器，处理器可以从另一种文件中提取 JavaScript 代码，然后让 ESLint 检测 JavaScript 代码。或者处理器可以在预处理中转换 JavaScript 代码。若要在配置文件中指定处理器，请使用 `processor` 键，并使用由**插件名**和**处理器名**组成的串接字符串加上斜杠。要为特定类型的文件指定处理器，请使用 `overrides` 键和 `processor` 键的组合。
+   - **processor** - 处理器。插件可以提供处理器，处理器可以从另一种文件中提取 JavaScript 代码，然后让 ESLint 检测 JavaScript 代码。或者处理器可以在预处理中转换 JavaScript 代码。若要在配置文件中指定处理器，请使用 `processor` 键，并使用由**插件名**和**处理器名**组成的串接字符串加上斜杠。要为特定类型的文件指定处理器，请使用 `overrides` 键和 `processor` 键的组合。
 
      ```json
      {
@@ -158,7 +158,7 @@ yarn add eslint --save-dev
 
      
 
-   - **Settings** - 共享设置。它将提供给每一个将被执行的规则。如果你想添加的自定义规则而且使它们可以访问到相同的信息，这将会很有用，并且很容易配置。
+   - **settings** - 共享设置。它将提供给每一个将被执行的规则。如果你想添加的自定义规则而且使它们可以访问到相同的信息，这将会很有用，并且很容易配置。
 
      ```json
      {
@@ -168,7 +168,7 @@ yarn add eslint --save-dev
      }
      ```
 
-     
+     在自定义规则create(context)钩子函数，context上下文中可以获取settings。
 
    - **extends** - 一个配置文件可以被基础配置中的已启用的规则继承。
 
