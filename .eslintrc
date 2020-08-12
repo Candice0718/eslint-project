@@ -2,7 +2,7 @@
   "plugins": [
     "myPlugin"
   ],
-  "processor": "myPlugin/myProcessor",
+  // "processor": "myPlugin/myProcessor",
   // "extends": "plugin:myPlugin/recommended",
   // "overrides": [
   //   {

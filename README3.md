@@ -24,7 +24,7 @@
 
    > 创建自定义规则还需要掌握抽象语法树AST(Abstract syntax tree)的知识。
    >
-   > Eslint默认的语法解析工具为Espree，我们可以在[AST explorer](https://astexplorer.net/)查看代码解析之后对应的type。
+   > Eslint默认的语法解析工具为Espree，我们可以在[AST explorer](https://astexplorer.net/)查看代码解析之后对应的节点类型。
 
    1. 创建myPlugin/rules/replacement.js
 
@@ -107,14 +107,19 @@
            }
               return {
                 	// 节点类型为字面量
-                  Literal: checkLiteral
+                	/**
+                	 * 如果一个 key 是个节点类型或 selector，在 向下 遍历树时，ESLint 调用 visitor 函数
+                	 * 如果一个 key 是个节点类型或 selector，并带有 :exit，在 向上 遍历树时，ESLint 调用 visitor 函数
+                	 * 如果一个 key 是个事件名字，ESLint 为代码路径分析调用 handler 函数
+                	 */
+               Literal: checkLiteral
               }
-          }
+       }
       };
       ```
-
+   
       
-
+   
    2. myPlugin/index.js 引入replacement.js
    
       ```javascript
